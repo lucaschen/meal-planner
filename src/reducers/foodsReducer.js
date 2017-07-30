@@ -17,6 +17,12 @@ export default (state = [], action) => {
   var newState = fromJS(state);
 
   if (action.type == "all_loadFromJSON") {
+    action.parsedJSON.foods = action.parsedJSON.foods.map(food => {
+      food.name = food.name.substring(0, 30);
+
+      return food;
+    });
+
     newState = fromJS(action.parsedJSON.foods);
   } else if (action.type == "foods_addFood") {
     const {

@@ -27,7 +27,12 @@ export default class FoodsList extends Component {
         <div className="_2noFoods">No foods. Add one below!</div>
       );
     } else {
-      var rows = this.props.foods.map((food, index) => {
+      const foodsList = this.props.foods.slice(0);
+      foodsList.sort((a, b) => {
+        return (a.name > b.name);
+      })
+
+      var rows = foodsList.map((food, index) => {
         const {
           id,
           name,

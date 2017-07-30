@@ -64,7 +64,7 @@ export default class AddEditFood extends Component {
   handleSubmit(event) {
     event.preventDefault();
 
-    const {
+    var {
       name,
       calories,
       carbohydrates,
@@ -72,6 +72,8 @@ export default class AddEditFood extends Component {
       fat,
       protein
     } = this.state.form;
+
+    name = name.substring(0, 30);
 
     if (this.state.currentlyEditing) {
       this.props.editFood(this.props.editId, name, calories, carbohydrates, fibre, fat, protein);
@@ -120,7 +122,8 @@ export default class AddEditFood extends Component {
           type="text"
           name="name"
           onChange={this.handleChange}
-          value={this.state.form.name} />
+          value={this.state.form.name}
+          maxLength="30" />
         <label className="_3label">
           Calories/100g:
         </label>

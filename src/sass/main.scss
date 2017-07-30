@@ -9,10 +9,11 @@ $theme-grey: #CCCCCC;
 }
 
 @mixin mainHeading {
-  border-bottom: 1px solid #CCC;
+  border-bottom: 1px solid #CCCCCC;
   font-size: 40px;
   font-weight: 300;
   margin-bottom: .5em;
+  text-align: center;
 }
 
 body {
@@ -67,7 +68,7 @@ a {
 input[type=text] {
   @include defaultFont;
   padding: .25em;
-  border: 1px solid #CCC;
+  border: 1px solid #CCCCCC;
 
   &:focus {
     border-color: $theme-light;
@@ -110,10 +111,15 @@ input[type=text] {
   }
 }
 
-.pageMain {
-  width: 1200px;
-  margin: 0 auto;
+#reactRoot {
   display: flex;
+
+  // > .pageMain
+}
+
+.pageMain {
+  margin: 0 auto;
+  display: inline-flex;
   flex-direction: row;
 
   //  #      ###### ###### #####     ####  ######  ####  ##### #  ####  #    #
@@ -124,8 +130,7 @@ input[type=text] {
   //  ###### ###### #        #       ####  ######  ####    #   #  ####  #    #
 
   > ._1leftSection {
-    flex: 0 auto;
-    min-width: 600px;
+    margin: 0 auto;
 
     > ._2noMeals {
       font-size: 25px;
@@ -134,18 +139,23 @@ input[type=text] {
 
     > ._2meal {
       margin-bottom: 20px;
+      text-align: center;
 
       > ._3title {
-        font-size: 30px;
+        font-size: 35px;
         font-weight: 400;
+        display: block;
+        margin-bottom: .25em;
       }
 
       > ._3foods {
         border-collapse: collapse;
+        width: 100%;
 
         td, th {
           padding: .25em .35em;
           text-align: center;
+          white-space: nowrap;
         }
 
         th {
@@ -177,7 +187,8 @@ input[type=text] {
       }
 
       > ._3addFood {
-        margin-top: 5px;
+        margin-top: 10px;
+        font-size: 18px;
       }
     }
 
@@ -247,7 +258,7 @@ input[type=text] {
             text-align: center;
             display: block;
             font-size: 18px;
-            color: #888;
+            color: #888888;
           }
         }
       }
@@ -263,7 +274,7 @@ input[type=text] {
 
   > ._1foodsList {
     margin-left: 50px;
-    flex: 1;
+    flex: 0 auto;
     background-color: white;
 
     > ._2heading {
@@ -280,12 +291,13 @@ input[type=text] {
       width: 100%;
 
       th {
-        border-bottom: 1px solid #AAA;
+        border-bottom: 1px solid #AAAAAA;
       }
 
       td, th {
         padding: .25em;
         text-align: center;
+        white-space: nowrap;
       }
 
       th:first-child {
@@ -294,7 +306,7 @@ input[type=text] {
       }
 
       td:first-child {
-        border-right: 1px solid #AAA;
+        border-right: 1px solid #AAAAAA;
         text-align: right;
         padding-right: 10px;
       }
@@ -303,6 +315,8 @@ input[type=text] {
     > ._2addEditFood {
       > ._3heading {
         margin: .75em 0 .25em;
+        text-align: center;
+        font-size: 30px;
       }
 
       > ._3label {
@@ -317,6 +331,73 @@ input[type=text] {
         width: 100%;
         font-size: 16px;
         margin-bottom: .5em;
+      }
+    }
+  }
+
+  //  #####   ####  #####  #    # #####
+  //  #    # #    # #    # #    # #    #
+  //  #    # #    # #    # #    # #    #
+  //  #####  #    # #####  #    # #####
+  //  #      #    # #      #    # #
+  //  #       ####  #       ####  #
+
+  > ._1summaryPopup {
+    position: fixed;
+    z-index: 2;
+    width: auto;
+    height: auto;
+    background-color: white;
+    padding: 20px 50px 20px 20px;
+    box-shadow: 0 0 5px #555;
+    border-radius: 5px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+    > ._2close {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      width: 30px;
+      height: 30px;
+      transform: rotate(-45deg);
+      transform-origin: 15px 15px;
+      cursor: pointer;
+
+      &:after {
+        content: "";
+        position: absolute;
+        width: 1px;
+        height: 30px;
+        top: 0;
+        right: 15px;
+        background-color: #555555;
+      }
+
+      &:before {
+        content: "";
+        position: absolute;
+        width: 30px;
+        height: 1px;
+        top: 15px;
+        right: 0;
+        background-color: #555555;
+      }
+    }
+
+    > ._2content {
+      > h2 {
+        margin: .5em 0 .25em;
+
+        &:first-child {
+          margin-top: 0;
+        }
+      }
+
+      > span {
+        display: block;
+        margin: .25em 0;
       }
     }
   }

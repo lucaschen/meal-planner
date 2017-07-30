@@ -61,7 +61,8 @@ export default class LeftSection extends Component {
     const actionButtonsProps = {
       downloadJSON: this.props.downloadJSON,
       editId: this.state.editId,
-      closeMealPlanner: this.props.closeMealPlanner
+      closeMealPlanner: this.props.closeMealPlanner,
+      showFoodSummary: this.props.showFoodSummary
     };
 
     return (

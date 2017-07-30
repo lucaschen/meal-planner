@@ -104,7 +104,7 @@ export default class Meal extends Component {
           </tbody>
         </table>
         <button className="_3addFood" onClick={this.addFood} disabled={!newFoodIds.length}>
-          Add Food
+          + Add Food
         </button>
       </div>
     );
