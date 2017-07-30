@@ -1,0 +1,323 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto:300,400");
+$theme-light: #00BFA5;
+$theme-light-hover: darken($theme-light, 5%);
+$theme-grey: #CCCCCC;
+
+@mixin defaultFont {
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+}
+
+@mixin mainHeading {
+  border-bottom: 1px solid #CCC;
+  font-size: 40px;
+  font-weight: 300;
+  margin-bottom: .5em;
+}
+
+body {
+  @include defaultFont;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+}
+
+button {
+  @include defaultFont;
+          appearance: none;
+     -moz-appearance: none;
+  -webkit-appearance: none;
+  background-color: $theme-light;
+  border: 0;
+  font-weight: 400;
+  border-radius: 3px;
+  color: white;
+  font-size: 14px;
+  padding: .2em .6em;
+  transition: background-color .25s;
+
+  &:hover {
+    background-color: $theme-light-hover;
+    cursor: pointer;
+  }
+
+  &:disabled {
+    background-color: $theme-grey;
+
+    &:hover {
+      background-color: $theme-grey;
+      cursor: not-allowed;
+    }
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
+
+a {
+  color: $theme-light;
+
+  &:hover {
+    color: $theme-light-hover;
+  }
+}
+
+input[type=text] {
+  @include defaultFont;
+  padding: .25em;
+  border: 1px solid #CCC;
+
+  &:focus {
+    border-color: $theme-light;
+    outline: none;
+  }
+}
+
+.notLoadedWrapper {
+  width: 300px;
+  margin: 100px auto 0;
+
+  > ._1chooseFile {
+    height: 100px;
+    box-shadow: 0 0 5px #CCCCCC;
+    position: relative;
+    display: flex;
+    border: 3px dashed #555555;
+
+    > ._2hiddenInput {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      cursor: pointer;
+    }
+
+    > ._2text {
+      margin: auto;
+      font-size: 40px;
+      color: #555555;
+    }
+  }
+
+  > ._1newProfile {
+    display: block;
+    text-align: right;
+    margin-top: 5px;
+  }
+}
+
+.pageMain {
+  width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+
+  //  #      ###### ###### #####     ####  ######  ####  ##### #  ####  #    #
+  //  #      #      #        #      #      #      #    #   #   # #    # ##   #
+  //  #      #####  #####    #       ####  #####  #        #   # #    # # #  #
+  //  #      #      #        #           # #      #        #   # #    # #  # #
+  //  #      #      #        #      #    # #      #    #   #   # #    # #   ##
+  //  ###### ###### #        #       ####  ######  ####    #   #  ####  #    #
+
+  > ._1leftSection {
+    flex: 0 auto;
+    min-width: 600px;
+
+    > ._2noMeals {
+      font-size: 25px;
+      margin: .25em 0;
+    }
+
+    > ._2meal {
+      margin-bottom: 20px;
+
+      > ._3title {
+        font-size: 30px;
+        font-weight: 400;
+      }
+
+      > ._3foods {
+        border-collapse: collapse;
+
+        td, th {
+          padding: .25em .35em;
+          text-align: center;
+        }
+
+        th {
+          border-bottom: 1px solid #AAAAAA;
+        }
+
+        ._3foods_name {
+          width: 200px;
+          text-align: left;
+
+          > ._4select {
+            width: 100%;
+          }
+        }
+
+        ._3foods_amount.-td {
+          > ._4input {
+            font-size: 18px;
+            width: 50px;
+            text-align: right;
+            border: 0;
+            border-bottom: 1px solid #AAAAAA;
+            outline: none;
+            vertical-align: middle;
+            margin-right: .1em;
+            padding: 0 2px;
+          }
+        }
+      }
+
+      > ._3addFood {
+        margin-top: 5px;
+      }
+    }
+
+    > ._2addFood {
+      > ._3heading {
+        margin-bottom: .25em;
+      }
+
+      > ._3flex {
+        display: flex;
+        flex-direction: row;
+
+        > ._4name {
+          flex: 1;
+          font-size: 16px;
+          padding: .25em;
+        }
+
+        > ._4insertAt {
+          flex: 0 auto;
+          margin-left: 10px;
+          font-size: 16px;
+        }
+
+        > ._4submit {
+          flex: 0 auto;
+          margin-left: 10px;
+        }
+      }
+    }
+
+    > ._2actionButtons {
+      margin-top: 20px;
+      text-align: center;
+
+      > ._3button {
+        font-size: 25px;
+        font-weight: 300;
+        margin: 0 5px;
+      }
+    }
+
+    > ._2totalMacrosWrapper {
+      > ._3heading {
+        @include mainHeading;
+      }
+
+      > ._3totalMacros {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        margin: 20px 0;
+
+        > ._4component {
+          margin: 0 10px;
+
+          > ._5number {
+            display: block;
+            font-size: 50px;
+            text-align: center;
+            font-weight: 300;
+            line-height: 1;
+            margin-bottom: .15em;
+          }
+
+          > ._5description {
+            text-align: center;
+            display: block;
+            font-size: 18px;
+            color: #888;
+          }
+        }
+      }
+    }
+  }
+
+  //  ######  ####   ####  #####   ####     #      #  ####  #####
+  //  #      #    # #    # #    # #         #      # #        #
+  //  #####  #    # #    # #    #  ####     #      #  ####    #
+  //  #      #    # #    # #    #      #    #      #      #   #
+  //  #      #    # #    # #    # #    #    #      # #    #   #
+  //  #       ####   ####  #####   ####     ###### #  ####    #
+
+  > ._1foodsList {
+    margin-left: 50px;
+    flex: 1;
+    background-color: white;
+
+    > ._2heading {
+      @include mainHeading;
+    }
+
+    > ._2noFoods {
+      font-size: 25px;
+      margin: .25em 0;
+    }
+
+    > ._2table {
+      border-collapse: collapse;
+      width: 100%;
+
+      th {
+        border-bottom: 1px solid #AAA;
+      }
+
+      td, th {
+        padding: .25em;
+        text-align: center;
+      }
+
+      th:first-child {
+        text-align: right;
+        padding-right: 10px;
+      }
+
+      td:first-child {
+        border-right: 1px solid #AAA;
+        text-align: right;
+        padding-right: 10px;
+      }
+    }
+
+    > ._2addEditFood {
+      > ._3heading {
+        margin: .75em 0 .25em;
+      }
+
+      > ._3label {
+        display: block;
+        font-weight: 400;
+        font-size: 16px;
+        margin-bottom: .25em;
+      }
+
+      > ._3input {
+        display: block;
+        width: 100%;
+        font-size: 16px;
+        margin-bottom: .5em;
+      }
+    }
+  }
+}
