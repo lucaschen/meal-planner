@@ -12,7 +12,7 @@ class Main extends Component {
     super();
 
     this.state = {
-      JSONLoaded: true
+      JSONLoaded: false
     }
 
     this.closeMealPlanner = this.closeMealPlanner.bind(this);
@@ -33,7 +33,7 @@ class Main extends Component {
   // }
 
   render() {
-    var chooseFile = null, foodsList = null, leftSection = null;
+    var foodsList = null, leftSection = null;
 
     if (!this.state.JSONLoaded) {
       const chooseFileProps = {
