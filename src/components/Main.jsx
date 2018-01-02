@@ -1,12 +1,12 @@
-import { connect } from 'react-redux';
-import React, { Component } from 'react';
+import { connect } from "react-redux";
+import React, { Component } from "react";
 
-import ChooseFile from './ChooseFile';
-import FoodsList from './FoodsList';
-import LeftSection from './LeftSection';
-import SummaryPopup from './SummaryPopup';
+import ChooseFile from "./ChooseFile";
+import FoodsList from "./FoodsList";
+import LeftSection from "./LeftSection";
+import SummaryPopup from "./SummaryPopup";
 
-import '../sass/main';
+import "../sass/main";
 
 class Main extends Component {
   constructor() {
@@ -15,7 +15,7 @@ class Main extends Component {
     this.state = {
       JSONLoaded: false,
       showSummaryPopup: false
-    }
+    };
 
     this.closeMealPlanner = this.closeMealPlanner.bind(this);
     this.showFoodSummary = this.showFoodSummary.bind(this);
@@ -49,28 +49,37 @@ class Main extends Component {
   // }
 
   render() {
-    var foodsList = null, leftSection = null, summaryPopup = null;
+    var foodsList = null,
+      leftSection = null,
+      summaryPopup = null;
 
     if (!this.state.JSONLoaded) {
       const chooseFileProps = {
         loadJSON: parsedJSON => {
+          this.props.store.loadJSON(parsedJSON);
           this.setState({
             JSONLoaded: true
           });
+        },
+        loadFromBrowser: () => {
+          const parsedJSON = JSON.parse(window.localStorage.getItem("savedMealInformation"));
           this.props.store.loadJSON(parsedJSON);
+          this.setState({
+            JSONLoaded: true
+          });
         },
         newProfile: () => {
           this.setState({
             JSONLoaded: true
           });
         }
-      }
+      };
 
       return <ChooseFile {...chooseFileProps} />;
     }
 
     const foodsListProps = {
-      foods: this.props.getFromStore('foods'),
+      foods: this.props.getFromStore("foods"),
       addFood: this.props.store.addFood,
       editFood: this.props.store.editFood,
       getFoodFromId: this.props.getFoodFromIdFromStore
@@ -78,8 +87,8 @@ class Main extends Component {
 
     const leftSectionProps = {
       downloadJSON: this.props.downloadJSONFromStore,
-      foods: this.props.getFromStore('foods'),
-      meals: this.props.getFromStore('meals'),
+      foods: this.props.getFromStore("foods"),
+      meals: this.props.getFromStore("meals"),
       addMeal: this.props.store.addMeal,
       addFoodToMeal: this.props.store.addFoodToMeal,
       getFoodFromId: this.props.getFoodFromIdFromStore,
@@ -87,6 +96,7 @@ class Main extends Component {
       removeMealFood: this.props.store.removeMealFood,
       changeFoodId: this.props.store.changeFoodId,
       closeMealPlanner: this.closeMealPlanner,
+      saveInBrowser: this.props.saveInBrowser,
       showFoodSummary: this.showFoodSummary
     };
 
@@ -95,7 +105,7 @@ class Main extends Component {
 
     if (this.state.showSummaryPopup) {
       const summaryPopupProps = {
-        meals: this.props.getFromStore('meals'),
+        meals: this.props.getFromStore("meals"),
         getFoodFromId: this.props.getFoodFromIdFromStore,
         hideFoodSummary: this.hideFoodSummary
       };
@@ -119,16 +129,23 @@ const mapStateToProps = state => {
     downloadJSONFromStore: () => {
       const stringifiedJSON = JSON.stringify(state);
 
-      const element = document.createElement('a');
-      element.setAttribute('href', 'data:application/json;charset=utf-8,' + encodeURIComponent(stringifiedJSON));
-      element.setAttribute('download', "mealPlanner.json");
+      const element = document.createElement("a");
+      element.setAttribute("href", "data:application/json;charset=utf-8," + encodeURIComponent(stringifiedJSON));
+      element.setAttribute("download", "mealPlanner.json");
 
-      element.style.display = 'none';
+      element.style.display = "none";
       document.body.appendChild(element);
 
       element.click();
 
       document.body.removeChild(element);
+    },
+    saveInBrowser: () => {
+      const stringifiedJSON = JSON.stringify(state);
+
+      window.localStorage.setItem("savedMealInformation", stringifiedJSON);
+
+      alert("Saved successfully!");
     },
     getFoodFromIdFromStore: foodId => {
       var foodInfo = null;
@@ -141,8 +158,8 @@ const mapStateToProps = state => {
 
       return foodInfo;
     }
-  }
-}
+  };
+};
 
 const mapDispatchToProps = dispatch => {
   return {
@@ -205,7 +222,7 @@ const mapDispatchToProps = dispatch => {
           type: "meals_removeMealFood",
           mealId,
           foodId
-        })
+        });
       },
       changeFoodId: (mealId, oldFoodId, newFoodId) => {
         dispatch({
@@ -213,10 +230,10 @@ const mapDispatchToProps = dispatch => {
           mealId,
           oldFoodId,
           newFoodId
-        })
+        });
       }
     }
-  }
-}
+  };
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Main);

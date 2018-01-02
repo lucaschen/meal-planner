@@ -1,10 +1,11 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
 export default class ChooseFile extends Component {
   constructor(props) {
     super(props);
 
     this.fileChosen = this.fileChosen.bind(this);
+    this.hasInBrowser = window.localStorage.getItem("savedMealInformation") !== null;
   }
 
   fileChosen(event) {
@@ -26,13 +27,13 @@ export default class ChooseFile extends Component {
           this.props.loadJSON(parsedJSON);
         } catch (e) {
           console.log(e.toString());
-          alert('JSON format invalid');
+          alert("JSON format invalid");
         }
-      }
+      };
 
       reader.readAsText(file);
     } else {
-      alert('The File APIs are not fully supported in this browser.');
+      alert("The File APIs are not fully supported in this browser.");
       return false;
     }
   }
@@ -45,16 +46,37 @@ export default class ChooseFile extends Component {
             className="_2hiddenInput"
             type="file"
             onChange={this.fileChosen}
-            ref={input => this.JSONFileInput = input} />
+            ref={input => (this.JSONFileInput = input)}
+          />
           <span className="_2text">Choose File</span>
         </div>
-        <span className="_1newProfile">
-          or <a href="#" onClick={event => {
-            event.preventDefault();
-            this.props.newProfile();
-          }}>create a new profile</a>
+        <span className="_1alternativeOption">
+          or{" "}
+          <a
+            href="#"
+            onClick={event => {
+              event.preventDefault();
+              this.props.newProfile();
+            }}
+          >
+            create a new profile
+          </a>
         </span>
+        {this.hasInBrowser && (
+          <span className="_1alternativeOption">
+            or{" "}
+            <a
+              href="#"
+              onClick={event => {
+                event.preventDefault();
+                this.props.loadFromBrowser();
+              }}
+            >
+              load from browser
+            </a>
+          </span>
+        )}
       </div>
-    )
+    );
   }
 }

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
 export default class ActionButtons extends Component {
   render() {
@@ -7,6 +7,9 @@ export default class ActionButtons extends Component {
         <button className="_3button" onClick={this.props.showFoodSummary}>
           Show Food Summary
         </button>
+        <button className="_3button" onClick={this.props.saveInBrowser}>
+          Save in Browser
+        </button>
         <button className="_3button" onClick={this.props.downloadJSON}>
           Export All Information
         </button>
@@ -14,6 +17,6 @@ export default class ActionButtons extends Component {
           Close
         </button>
       </div>
-    )
+    );
   }
 }

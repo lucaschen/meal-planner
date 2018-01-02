@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
-import AddMeal from './AddMeal';
-import ActionButtons from './ActionButtons';
-import Meal from './Meal';
-import TotalMacros from './TotalMacros';
+import AddMeal from "./AddMeal";
+import ActionButtons from "./ActionButtons";
+import Meal from "./Meal";
+import TotalMacros from "./TotalMacros";
 
 export default class LeftSection extends Component {
   constructor() {
@@ -11,18 +11,14 @@ export default class LeftSection extends Component {
 
     this.state = {
       editId: null
-    }
+    };
   }
 
   render() {
     var meals = [];
 
     if (!this.props.meals.length) {
-      meals = (
-        <div className="_2noMeals">
-          No meals. Add one below!
-        </div>
-      );
+      meals = <div className="_2noMeals">No meals. Add one below!</div>;
     } else {
       meals = this.props.meals.map((meal, index) => {
         const mealProps = {
@@ -34,7 +30,7 @@ export default class LeftSection extends Component {
           },
           getFoodFromId: this.props.getFoodFromId,
           setServingSize: (foodId, servingSize) => {
-            this.props.setServingSize(meal.id, foodId, servingSize)
+            this.props.setServingSize(meal.id, foodId, servingSize);
           },
           removeMealFood: foodId => {
             this.props.removeMealFood(meal.id, foodId);
@@ -62,7 +58,8 @@ export default class LeftSection extends Component {
       downloadJSON: this.props.downloadJSON,
       editId: this.state.editId,
       closeMealPlanner: this.props.closeMealPlanner,
-      showFoodSummary: this.props.showFoodSummary
+      showFoodSummary: this.props.showFoodSummary,
+      saveInBrowser: this.props.saveInBrowser
     };
 
     return (

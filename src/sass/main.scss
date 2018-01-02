@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto:300,400");
-$theme-light: #00BFA5;
+$theme-light: #00bfa5;
 $theme-light-hover: darken($theme-light, 5%);
-$theme-grey: #CCCCCC;
+$theme-grey: #cccccc;
 
 @mixin defaultFont {
   font-family: "Roboto", sans-serif;
@@ -9,10 +9,10 @@ $theme-grey: #CCCCCC;
 }
 
 @mixin mainHeading {
-  border-bottom: 1px solid #CCCCCC;
+  border-bottom: 1px solid #cccccc;
   font-size: 40px;
   font-weight: 300;
-  margin-bottom: .5em;
+  margin-bottom: 0.5em;
   text-align: center;
 }
 
@@ -20,14 +20,19 @@ body {
   @include defaultFont;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   margin: 0;
 }
 
 button {
   @include defaultFont;
-          appearance: none;
-     -moz-appearance: none;
+  appearance: none;
+  -moz-appearance: none;
   -webkit-appearance: none;
   background-color: $theme-light;
   border: 0;
@@ -35,8 +40,8 @@ button {
   border-radius: 3px;
   color: white;
   font-size: 14px;
-  padding: .2em .6em;
-  transition: background-color .25s;
+  padding: 0.2em 0.6em;
+  transition: background-color 0.25s;
 
   &:hover {
     background-color: $theme-light-hover;
@@ -65,10 +70,10 @@ a {
   }
 }
 
-input[type=text] {
+input[type="text"] {
   @include defaultFont;
-  padding: .25em;
-  border: 1px solid #CCCCCC;
+  padding: 0.25em;
+  border: 1px solid #cccccc;
 
   &:focus {
     border-color: $theme-light;
@@ -82,7 +87,7 @@ input[type=text] {
 
   > ._1chooseFile {
     height: 100px;
-    box-shadow: 0 0 5px #CCCCCC;
+    box-shadow: 0 0 5px #cccccc;
     position: relative;
     display: flex;
     border: 3px dashed #555555;
@@ -104,7 +109,7 @@ input[type=text] {
     }
   }
 
-  > ._1newProfile {
+  > ._1alternativeOption {
     display: block;
     text-align: right;
     margin-top: 5px;
@@ -134,7 +139,7 @@ input[type=text] {
 
     > ._2noMeals {
       font-size: 25px;
-      margin: .25em 0;
+      margin: 0.25em 0;
     }
 
     > ._2meal {
@@ -145,21 +150,22 @@ input[type=text] {
         font-size: 35px;
         font-weight: 400;
         display: block;
-        margin-bottom: .25em;
+        margin-bottom: 0.25em;
       }
 
       > ._3foods {
         border-collapse: collapse;
         width: 100%;
 
-        td, th {
-          padding: .25em .35em;
+        td,
+        th {
+          padding: 0.25em 0.35em;
           text-align: center;
           white-space: nowrap;
         }
 
         th {
-          border-bottom: 1px solid #AAAAAA;
+          border-bottom: 1px solid #aaaaaa;
         }
 
         ._3foods_name {
@@ -177,10 +183,10 @@ input[type=text] {
             width: 50px;
             text-align: right;
             border: 0;
-            border-bottom: 1px solid #AAAAAA;
+            border-bottom: 1px solid #aaaaaa;
             outline: none;
             vertical-align: middle;
-            margin-right: .1em;
+            margin-right: 0.1em;
             padding: 0 2px;
           }
         }
@@ -194,7 +200,7 @@ input[type=text] {
 
     > ._2addFood {
       > ._3heading {
-        margin-bottom: .25em;
+        margin-bottom: 0.25em;
       }
 
       > ._3flex {
@@ -204,7 +210,7 @@ input[type=text] {
         > ._4name {
           flex: 1;
           font-size: 16px;
-          padding: .25em;
+          padding: 0.25em;
         }
 
         > ._4insertAt {
@@ -251,7 +257,7 @@ input[type=text] {
             text-align: center;
             font-weight: 300;
             line-height: 1;
-            margin-bottom: .15em;
+            margin-bottom: 0.15em;
           }
 
           > ._5description {
@@ -283,7 +289,7 @@ input[type=text] {
 
     > ._2noFoods {
       font-size: 25px;
-      margin: .25em 0;
+      margin: 0.25em 0;
     }
 
     > ._2table {
@@ -291,11 +297,12 @@ input[type=text] {
       width: 100%;
 
       th {
-        border-bottom: 1px solid #AAAAAA;
+        border-bottom: 1px solid #aaaaaa;
       }
 
-      td, th {
-        padding: .25em;
+      td,
+      th {
+        padding: 0.25em;
         text-align: center;
         white-space: nowrap;
       }
@@ -306,7 +313,7 @@ input[type=text] {
       }
 
       td:first-child {
-        border-right: 1px solid #AAAAAA;
+        border-right: 1px solid #aaaaaa;
         text-align: right;
         padding-right: 10px;
       }
@@ -314,7 +321,7 @@ input[type=text] {
 
     > ._2addEditFood {
       > ._3heading {
-        margin: .75em 0 .25em;
+        margin: 0.75em 0 0.25em;
         text-align: center;
         font-size: 30px;
       }
@@ -323,14 +330,14 @@ input[type=text] {
         display: block;
         font-weight: 400;
         font-size: 16px;
-        margin-bottom: .25em;
+        margin-bottom: 0.25em;
       }
 
       > ._3input {
         display: block;
         width: 100%;
         font-size: 16px;
-        margin-bottom: .5em;
+        margin-bottom: 0.5em;
       }
     }
   }
@@ -388,7 +395,7 @@ input[type=text] {
 
     > ._2content {
       > h2 {
-        margin: .5em 0 .25em;
+        margin: 0.5em 0 0.25em;
 
         &:first-child {
           margin-top: 0;
@@ -397,7 +404,7 @@ input[type=text] {
 
       > span {
         display: block;
-        margin: .25em 0;
+        margin: 0.25em 0;
       }
     }
   }

@@ -1,15 +1,14 @@
 {
   "name": "meal-planner",
   "version": "1.0.0",
-  "description": "",
+  "description": "A Meal Planner for tracking calories and macronutrients when meal prepping in advance.",
   "main": "src/App.js",
   "scripts": {
-    "start": "webpack-dev-server --env=dev --progress --profile --colors --hot=true",
-    "build": "webpack --env=prod --progress --profile --colors"
+    "build": "webpack --env=prod --progress --profile --colors",
+    "watch": "webpack-dev-server --env=dev --progress --profile --colors --hot=true"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Lucas Chen",
+  "license": "MIT",
   "devDependencies": {
     "babel-core": "^6.25.0",
     "babel-loader": "^7.1.1",
@@ -27,5 +26,9 @@
     "style-loader": "^0.18.2",
     "webpack": "^3.4.1",
     "webpack-dev-server": "^2.6.1"
+  },
+  "engines": {
+    "node": "~8.9.0",
+    "npm": "~5.6.0"
   }
 }
