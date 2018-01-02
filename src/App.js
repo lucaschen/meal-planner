@@ -1,11 +1,11 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React from "react";
+import ReactDOM from "react-dom";
 
-import Main from './components/Main';
+import Main from "./components/Main";
 
-import { Provider } from 'react-redux';
+import { Provider } from "react-redux";
 
-import reduxStore from './reducers/allReducers';
+import reduxStore from "./reducers/allReducers";
 
 ReactDOM.render(
   <Provider store={reduxStore}>
@@ -14,4 +14,6 @@ ReactDOM.render(
   document.getElementById("reactRoot")
 );
 
-module.hot.accept();
+if (process.env.NODE_ENV === "development") {
+  module.hot.accept();
+}

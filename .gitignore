@@ -1,3 +1,4 @@
+dist/bundle.js
+dist/main.css
 node_modules/
-build/
 .csscomb.json

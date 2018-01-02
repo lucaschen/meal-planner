@@ -1,6 +1,6 @@
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
-const path = require('path');
-const webpack = require('webpack');
+const path = require("path");
+const webpack = require("webpack");
 
 const extractSass = new ExtractTextPlugin({
   filename: "[name].css",
@@ -8,38 +8,35 @@ const extractSass = new ExtractTextPlugin({
 });
 
 module.exports = {
-  entry: [
-    './src/App.js'
-  ],
+  entry: ["./src/App.js"],
   output: {
-    path: __dirname + '/build',
-    publicPath: '/',
-    filename: 'bundle.js'
+    path: __dirname + "/dist",
+    publicPath: "/",
+    filename: "bundle.js"
   },
   module: {
     rules: [
       {
         test: /\.jsx?$/,
-        include: [
-          path.resolve(__dirname, "src")
-        ],
+        include: [path.resolve(__dirname, "src")],
         loader: "babel-loader",
         options: {
           presets: [
-            ["env", {
-              "targets": {
-                "browsers": ["last 2 versions"]
+            [
+              "env",
+              {
+                targets: {
+                  browsers: ["last 2 versions"]
+                }
               }
-            }],
+            ],
             "react"
           ]
         }
       },
       {
         test: /\.scss$/,
-        include: [
-          path.resolve(__dirname, "src")
-        ],
+        include: [path.resolve(__dirname, "src")],
         use: extractSass.extract({
           use: [
             {
@@ -55,7 +52,7 @@ module.exports = {
     ]
   },
   resolve: {
-    extensions: ['.js', '.jsx', '.scss']
+    extensions: [".js", ".jsx", ".scss"]
   },
   plugins: [
     new webpack.LoaderOptionsPlugin({
